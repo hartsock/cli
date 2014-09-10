@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/XenoPhex/jibber_jabber"
 	"github.com/cloudfoundry/cli/cf/i18n"
+	"github.com/pivotal-cf-experimental/jibber_jabber"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
