@@ -1,5 +1,6 @@
 git fetch
 git checkout %GIT_COMMIT%
+git pull
 
 go get github.com/jteeuwen/go-bindata/...
 go-bindata -pkg resources -ignore ".go" -o cf/resources/i18n_resources.go cf/i18n/resources/... cf/i18n/test_fixtures/...
