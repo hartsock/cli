@@ -5,6 +5,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"testing"
+	"time"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -59,13 +60,13 @@ var _ = Describe("main", func() {
 		})
 
 		It("Can call a executable from the Plugins configuration if it does not exist as a cf command", func() {
-			output := Cf("valid-plugin")
+			output := Cf("valid-plugin").Wait(10 * time.Second)
 			Eventually(output.Out).Should(Say("HaHaHaHa you called the push plugin"))
 		})
 
 		It("informs user for any invalid commands", func() {
 			output := Cf("foo-bar")
-			Eventually(output.Out).Should(Say("no help topic for 'foo-bar'"))
+			Eventually(output.Out).Should(Say("cf: 'foo-bar' is not a registered command. See 'cf help'"))
 		})
 
 		It("Calls core cf command if the plugin shares the same name", func() {
