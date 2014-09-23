@@ -14,7 +14,7 @@ import (
 type Command interface {
 	//run is passed in all the command line parameter arguments and
 	//an object containing all of the cli commands available to them
-	Run(args []string, cmds *CoreCommands) error
+	Run(args []string, cmds *string) error
 }
 
 /**

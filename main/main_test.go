@@ -59,9 +59,13 @@ var _ = Describe("main", func() {
 			Eventually(output.Out.Contents).Should(ContainSubstring("A command line tool to interact with Cloud Foundry"))
 		})
 
-		It("Can call a executable from the Plugins configuration if it does not exist as a cf command", func() {
-			output := Cf("valid-plugin").Wait(10 * time.Second)
+		FIt("Can call a executable from the Plugins configuration if it does not exist as a cf command", func() {
+			output := Cf("valid-plugin").Wait(5 * time.Second)
+			println("~~~~ output: ", output.Out.Contents())
+
 			Eventually(output.Out).Should(Say("HaHaHaHa you called the push plugin"))
+			println("pass eventually")
+
 		})
 
 		It("informs user for any invalid commands", func() {

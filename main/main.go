@@ -165,7 +165,7 @@ func callPlugin(args []string, location string) {
 	}
 	//}()
 
-	time.Sleep(10 * time.Second)
+	time.Sleep(3 * time.Second)
 	//Call the plugin's Run function through rpc
 	client, err := rpc.Dial("tcp", "127.0.0.1:1234")
 	if err != nil {
@@ -173,9 +173,13 @@ func callPlugin(args []string, location string) {
 		os.Exit(1)
 	}
 
-	err = client.Call("Command.Run", []string{"stuff"}, nil)
+	tmp := "abc"
+	err = client.Call("PushCommand.Run", []string{"stuff"}, &tmp)
 	if err != nil {
 		fmt.Println("error:", err)
 		os.Exit(1)
 	}
+
+	cmd.Process.Kill()
+	cmd.Wait()
 }

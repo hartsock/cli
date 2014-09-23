@@ -13,13 +13,14 @@ import (
 	"github.com/cloudfoundry/cli/plugin"
 )
 
-type Command struct{}
+type PushCommand struct{}
 
-func (c Command) Run(args []string, cmds *plugin.CoreCommands) error {
+func (c *PushCommand) Run(args []string, cmds *string) error {
 	fmt.Println("HaHaHaHa you called the push plugin")
+
 	return nil
 }
 
 func main() {
-	plugin.ServeCommand(new(Command))
+	plugin.ServeCommand(new(PushCommand))
 }
