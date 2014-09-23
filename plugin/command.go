@@ -26,7 +26,7 @@ func ServeCommand(cmd Command) {
 	//register command
 	rpc.Register(cmd)
 
-	listener, err := net.Listen("tcp", ":1234")
+	listener, err := net.Listen("tcp", ":20001")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)

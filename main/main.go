@@ -167,9 +167,8 @@ func callPlugin(args []string, location string) {
 
 	time.Sleep(3 * time.Second)
 	//Call the plugin's Run function through rpc
-	client, err := rpc.Dial("tcp", "127.0.0.1:1234")
+	client, err := rpc.Dial("tcp", "127.0.0.1:20001")
 	if err != nil {
-		fmt.Println("dialing:", err)
 		os.Exit(1)
 	}
 
