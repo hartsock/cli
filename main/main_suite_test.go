@@ -14,18 +14,21 @@ import (
 func TestMain(t *testing.T) {
 	RegisterFailHandler(Fail)
 	dir, err := os.Getwd()
-	Expect(err).NotTo(HaveOccurred())
+	if err != nil {
+		panic(err)
+	}
 
-	cmd := exec.Command("go", "build", "-o", path.Join(dir, "..", "fixtures", "plugins", "test"), path.Join(dir, "..", "fixtures", "plugins", "test.go"))
+	cmd := exec.Command("go", "build", "-o", path.Join(dir, "..", "fixtures", "plugins", "test_1"), path.Join(dir, "..", "fixtures", "plugins", "test_1.go"))
 	err = cmd.Run()
 	if err != nil {
-		println(err.Error())
+		panic(err)
 	}
-	Expect(err).NotTo(HaveOccurred())
 
-	cmd = exec.Command("go", "build", "-o", path.Join(dir, "..", "fixtures", "plugins", "plugin2"), path.Join(dir, "..", "fixtures", "plugins", "plugin2.go"))
+	cmd = exec.Command("go", "build", "-o", path.Join(dir, "..", "fixtures", "plugins", "test_2"), path.Join(dir, "..", "fixtures", "plugins", "test_2.go"))
 	err = cmd.Run()
-	Expect(err).NotTo(HaveOccurred())
+	if err != nil {
+		panic(err)
+	}
 
 	RunSpecs(t, "Main Suite")
 }
