@@ -28,8 +28,7 @@
   "ColorEnabled": "",
   "Locale": "",
  "Plugins": {
-    "valid1": "../fixtures/plugins/test",
-    "valid2": "../fixtures/plugins/plugin2",
-    "help": "../fixtures/plugins/test"
+    "valid1": "../fixtures/plugins/test_1",
+    "valid2": "../fixtures/plugins/test_2"
   } 
 }
